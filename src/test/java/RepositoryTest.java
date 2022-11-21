@@ -47,6 +47,38 @@ public class RepositoryTest {
     }
 
     @Test
+    public void findTwo() {
+        ProductRepository repo = new ProductRepository();
+
+        repo.addProduct(book1);
+        repo.addProduct(book2);
+
+        Product[] expected = { book1, book2 };
+        Product[] actual = repo.findAll();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void findOne() {
+        ProductRepository repo = new ProductRepository();
+
+        repo.addProduct(book1);
+
+        Product[] expected = { book1 };
+        Product[] actual = repo.findAll();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void empty() {
+        ProductRepository repo = new ProductRepository();
+
+        Product[] expected = { };
+        Product[] actual = repo.findAll();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
     public void removeById() {
         ProductRepository repo = new ProductRepository();
 
@@ -150,6 +182,4 @@ public class RepositoryTest {
         String actual = phone.getManufacturer();
         Assertions.assertEquals(expected, actual);
     }
-
-
     }
