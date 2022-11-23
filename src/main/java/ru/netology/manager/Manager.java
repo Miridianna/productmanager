@@ -1,6 +1,7 @@
 package ru.netology.manager;
 
 import ru.netology.domain.Product;
+import ru.netology.repository.NotFoundException;
 import ru.netology.repository.ProductRepository;
 
 public class Manager {
@@ -14,7 +15,7 @@ public class Manager {
         repo.addProduct(product);
     }
 
-    public void removeById(int id) {
+    public void removeById(int id) throws NotFoundException {
         repo.removeById(id);
     }
 

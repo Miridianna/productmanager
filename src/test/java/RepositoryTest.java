@@ -4,6 +4,7 @@ import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
 import ru.netology.manager.Manager;
+import ru.netology.repository.NotFoundException;
 import ru.netology.repository.ProductRepository;
 
 public class RepositoryTest {
@@ -181,5 +182,19 @@ public class RepositoryTest {
         String expected = "All Phones";
         String actual = phone.getManufacturer();
         Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void removeProductByNotFoundId() {
+        ProductRepository repo = new ProductRepository();
+
+        repo.addProduct(book1);
+        repo.addProduct(book2);
+        repo.addProduct(phone1);
+        repo.addProduct(phone2);
+
+        Assertions.assertThrows(NotFoundException.class, () -> {
+            repo.removeById(200);
+        });
     }
     }
