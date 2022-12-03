@@ -1,3 +1,4 @@
+package ru.netology.repository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Book;
@@ -6,6 +7,8 @@ import ru.netology.domain.Smartphone;
 import ru.netology.manager.Manager;
 import ru.netology.repository.NotFoundException;
 import ru.netology.repository.ProductRepository;
+
+
 
 public class RepositoryTest {
 
@@ -90,36 +93,6 @@ public class RepositoryTest {
 
         Product[] expected = { book2, phone1, phone2 };
         Product[] actual = repo.removeById(book1.getId());
-        Assertions.assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void removeByIdInManagerIThoughtButNot() {
-        ProductRepository repo = new ProductRepository();
-        Manager manager = new Manager(repo);
-
-        manager.add(book1);
-        manager.add(book2);
-        manager.add(phone1);
-        manager.add(phone2);
-
-        Product[] expected = { book1, book2, phone2 };
-        Product[] actual = repo.removeById(102);
-        Assertions.assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void searchBy() {
-        ProductRepository repo = new ProductRepository();
-        Manager manager = new Manager(repo);
-
-        manager.add(book1);
-        manager.add(book2);
-        manager.add(phone1);
-        manager.add(phone2);
-
-        Product[] expected = { book1, book2 };
-        Product[] actual = manager.searchBy("Testing");
         Assertions.assertArrayEquals(expected, actual);
     }
 
